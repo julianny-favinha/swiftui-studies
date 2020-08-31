@@ -10,20 +10,27 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var checkAmount = ""
-    @State private var numberOfPeople = 2
+    @State private var numberOfPeople = 0
     @State private var tipPercentage = 2
     
     let tipPercentages = [10, 15, 20, 25, 0]
     
     var totalPerPerson: Double {
-        let peopleCount = Double(numberOfPeople  + 2)
+        let peopleCount = Double(numberOfPeople + 2)
         let tipSelected = Double(tipPercentages[tipPercentage])
         let orderAmount = Double(checkAmount) ?? 0
-        
         let tip = orderAmount  / 100 * tipSelected
         let total = orderAmount + tip
         
         return total / peopleCount
+    }
+    
+    var total: Double {
+        let tipSelected = Double(tipPercentages[tipPercentage])
+        let orderAmount = Double(checkAmount) ?? 0
+        let tip = orderAmount  / 100 * tipSelected
+        
+        return orderAmount + tip
     }
     
     var body: some View {
@@ -49,8 +56,12 @@ struct ContentView: View {
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 
-                Section {
+                Section(header: Text("Amount per person")) {
                     Text("$\(totalPerPerson, specifier: "%.2f")")
+                }
+                
+                Section(header: Text("Total amount")) {
+                    Text("$\(total, specifier: "%.2f")")
                 }
             }
         .navigationBarTitle(Text("WeSplit"))

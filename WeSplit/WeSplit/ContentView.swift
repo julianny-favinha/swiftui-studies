@@ -53,7 +53,7 @@ struct ContentView: View {
                             Text("\(self.tipPercentages[$0])%")
                         }
                     }
-                    .pickerStyle(SegmentedPickerStyle())
+                    .pickerStyle(WheelPickerStyle())
                 }
                 
                 Section(header: Text("Amount per person")) {

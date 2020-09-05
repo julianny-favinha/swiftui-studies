@@ -37,25 +37,38 @@ struct ContentView: View {
             return 0.0
         }
 
+        let celsiusMeasurement = Measurement(value: inputValue, unit: UnitTemperature.celsius)
+        let fahrenheitMeasurement = Measurement(value: inputValue, unit: UnitTemperature.fahrenheit)
+        let kelvinMeasurement = Measurement(value: inputValue, unit: UnitTemperature.kelvin)
+
         switch (inputTemperature, resultTemperature) {
         case (.celsius, .celsius):
             return inputValue
+
         case (.celsius, .fahrenheit):
-            return inputValue * (9.0/5.0) + 32.0
+            return celsiusMeasurement.converted(to: .fahrenheit).value
+
         case (.celsius, .kelvin):
-            return inputValue + 273
+            return celsiusMeasurement.converted(to: .kelvin).value
+
         case (.fahrenheit, .celsius):
-            return (inputValue - 32.0) * (5.0/9.0)
+            return fahrenheitMeasurement.converted(to: .celsius).value
+
         case (.fahrenheit, .fahrenheit):
             return inputValue
+
         case (.fahrenheit, .kelvin):
-            return (2297.0 + 5.0 * inputValue) / 9.0
+            return fahrenheitMeasurement.converted(to: .kelvin).value
+
         case (.kelvin, .kelvin):
             return inputValue
+
         case (.kelvin, .celsius):
-            return inputValue - 273
+            return kelvinMeasurement.converted(to: .celsius).value
+
         case (.kelvin, .fahrenheit):
-            return ((9.0 * inputValue) - 2297) / 5.0
+            return kelvinMeasurement.converted(to: .fahrenheit).value
+
         }
     }
 
@@ -69,23 +82,27 @@ struct ContentView: View {
             return 0.0
         }
 
+        let secondMeasurement = Measurement(value: inputValue, unit: UnitDuration.seconds)
+        let minuteMeasurement = Measurement(value: inputValue, unit: UnitDuration.minutes)
+        let hourMeasurement = Measurement(value: inputValue, unit: UnitDuration.hours)
+
         switch (inputTime, resultTime) {
         case (.second, .second):
             return inputValue
         case (.second, .minute):
-            return inputValue / 60.0
+            return secondMeasurement.converted(to: .minutes).value
         case (.second, .hour):
-            return inputValue / 3600.0
+            return secondMeasurement.converted(to: .hours).value
         case (.minute, .second):
-            return inputValue * 60.0
+            return minuteMeasurement.converted(to: .seconds).value
         case (.minute, .minute):
             return inputValue
         case (.minute, .hour):
-            return inputValue / 60.0
+            return minuteMeasurement.converted(to: .hours).value
         case (.hour, .second):
-            return inputValue * 3600
+            return hourMeasurement.converted(to: .seconds).value
         case (.hour, .minute):
-            return inputValue * 60
+            return hourMeasurement.converted(to: .minutes).value
         case (.hour, .hour):
             return inputValue
         }

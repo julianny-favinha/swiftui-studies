@@ -9,8 +9,9 @@
 import Foundation
 
 enum Measure: String, CaseIterable {
-    case temperature = "Temperature"
     case time = "Time"
+    case temperature = "Temperature"
+
 }
 
 enum Temperature: String, CaseIterable {
@@ -20,8 +21,7 @@ enum Temperature: String, CaseIterable {
 }
 
 enum Time: String, CaseIterable {
-    case second
-    case minute
-    case hour
-    case day
+    case second = "Second"
+    case minute = "Minute"
+    case hour = "Hour"
 }

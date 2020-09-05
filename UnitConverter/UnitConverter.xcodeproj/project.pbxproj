@@ -14,6 +14,7 @@
 		54CFD989250400EC006A05C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54CFD988250400EC006A05C3 /* Preview Assets.xcassets */; };
 		54CFD98C250400EC006A05C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54CFD98A250400EC006A05C3 /* LaunchScreen.storyboard */; };
 		54CFD99425040CE2006A05C3 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD99325040CE2006A05C3 /* Model.swift */; };
+		54CFD9972504219B006A05C3 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CFD9962504219B006A05C3 /* Array+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		54CFD98B250400EC006A05C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54CFD98D250400EC006A05C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54CFD99325040CE2006A05C3 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		54CFD9962504219B006A05C3 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				54CFD98D250400EC006A05C3 /* Info.plist */,
 				54CFD987250400EC006A05C3 /* Preview Content */,
 				54CFD99325040CE2006A05C3 /* Model.swift */,
+				54CFD9962504219B006A05C3 /* Array+Extensions.swift */,
 			);
 			path = UnitConverter;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54CFD980250400EA006A05C3 /* AppDelegate.swift in Sources */,
+				54CFD9972504219B006A05C3 /* Array+Extensions.swift in Sources */,
 				54CFD982250400EA006A05C3 /* SceneDelegate.swift in Sources */,
 				54CFD984250400EA006A05C3 /* ContentView.swift in Sources */,
 				54CFD99425040CE2006A05C3 /* Model.swift in Sources */,

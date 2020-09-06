@@ -12,7 +12,8 @@ struct ContentView: View {
     @State private var checkAmount = ""
     @State private var numberOfPeople = 0
     @State private var tipPercentage = 2
-    
+    @State private var useRedText = false
+
     let tipPercentages = [10, 15, 20, 25, 0]
     
     var totalPerPerson: Double {
@@ -53,7 +54,7 @@ struct ContentView: View {
                             Text("\(self.tipPercentages[$0])%")
                         }
                     }
-                    .pickerStyle(WheelPickerStyle())
+                    .pickerStyle(SegmentedPickerStyle())
                 }
                 
                 Section(header: Text("Amount per person")) {
@@ -62,6 +63,7 @@ struct ContentView: View {
                 
                 Section(header: Text("Total amount")) {
                     Text("$\(total, specifier: "%.2f")")
+                        .foregroundColor(Double(tipPercentages[tipPercentage]) == 0 ? .red : .black)
                 }
             }
         .navigationBarTitle(Text("WeSplit"))

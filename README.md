@@ -8,3 +8,4 @@ SwiftUI's 100 days marathon created by [twostraws](https://github.com/twostraws)
 - (23-24) Project 3: ViewsAndModifiers
 - (25) Challenge 2: RockPaperScissors
 - (26-28) Project 4: BetterRest
+- (29-31) Project 5: WordScramble

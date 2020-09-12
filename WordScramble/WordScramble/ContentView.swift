@@ -17,6 +17,8 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var isShowingError = false
 
+    @State private var score = 0
+
     var body: some View {
         NavigationView {
             VStack {
@@ -29,7 +31,17 @@ struct ContentView: View {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
+
+                Text("\(score) points")
+                .foregroundColor(.pink)
+                .padding()
+
             .navigationBarTitle(rootWord)
+                .navigationBarItems(trailing: Button(action: {
+                    self.refreshWord()
+                }) {
+                    Image(systemName: "repeat")
+                })
             .onAppear(perform: startGame)
                 .alert(isPresented: $isShowingError) {
                     Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
@@ -42,6 +54,11 @@ struct ContentView: View {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
 
         guard answer.count > 0 else { return }
+
+        guard isNotEqual(word: answer) else {
+            wordError(title: "Word is equal", message: "Type other word")
+            return
+        }
 
         guard isOriginal(word: answer) else {
             wordError(title: "Word used already", message: "Be more creative")
@@ -60,9 +77,16 @@ struct ContentView: View {
 
         usedWords.insert(answer, at: 0)
         newWord = ""
+        score += answer.count
     }
 
     func startGame() {
+        refreshWord()
+
+        score = 0
+    }
+
+    func refreshWord() {
         guard let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt"),
             let startWords = try? String(contentsOf: startWordsURL) else {
                 fatalError("Could not load words")
@@ -70,6 +94,10 @@ struct ContentView: View {
 
         let allWords = startWords.components(separatedBy: "\n")
         rootWord = allWords.randomElement() ?? "silkworm"
+    }
+
+    func isNotEqual(word: String) -> Bool {
+        word != rootWord
     }
 
     func isOriginal(word: String) -> Bool {

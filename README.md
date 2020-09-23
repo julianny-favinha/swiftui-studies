@@ -1,4 +1,4 @@
-# swiftui-studies
+# SwiftUI
 
 SwiftUI's 100 days marathon created by [twostraws](https://github.com/twostraws) 🍎
 
